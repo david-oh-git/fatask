@@ -1,0 +1,91 @@
+import io.davidosemwota.template.buildsource.BuildPlugins
+import io.davidosemwota.template.buildsource.Libs
+
+apply plugin: BuildPlugins.benManes
+apply from: "$rootProject.projectDir/gradle/git-hooks.gradle"
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath Libs.androidGradlePlugin
+        classpath Libs.Kotlin.gradlePlugin
+        classpath Libs.benManesUpdatePlugin
+        classpath Libs.spotlessPlugin
+        classpath Libs.ktlint
+        classpath Libs.Detekt.detekt
+    }
+}
+
+subprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+    apply from: "$rootProject.projectDir/gradle/spotless.gradle"
+    apply from: "$rootProject.projectDir/gradle/detekt.gradle"
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions {
+            // Treat all Kotlin warnings as errors
+//            allWarningsAsErrors = true
+
+            freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
+
+            // Enable experimental coroutines APIs, including Flow
+            freeCompilerArgs += '-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi'
+            freeCompilerArgs += '-Xopt-in=kotlinx.coroutines.FlowPreview'
+            freeCompilerArgs += '-Xopt-in=kotlin.Experimental'
+
+            // Set JVM target to 1.8
+            jvmTarget = "1.8"
+        }
+    }
+
+    afterEvaluate {
+        tasks['clean'].dependsOn installGitHooks
+        tasks['assemble'].dependsOn installGitHooks
+    }
+
+}
+
+def isNonStable = { String version ->
+    def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { it -> version.toUpperCase().contains(it) }
+    def regex = /^[0-9,.v-]+(-r)?$/
+    return !stableKeyword && !(version ==~ regex)
+}
+
+tasks.named("dependencyUpdates").configure {
+
+    checkForGradleUpdate = true
+    outputFormatter = "html"
+    outputDir = "build/dependencyUpdates"
+    reportfileName = "report"
+
+    // reject all non stable versions
+    rejectVersionIf {
+        isNonStable(it.candidate.version)
+    }
+
+    // Example 2: disallow release candidates as upgradable versions from stable versions
+    rejectVersionIf {
+        isNonStable(it.candidate.version) && !isNonStable(it.currentVersion)
+    }
+
+    // Example 3: using the full syntax
+    resolutionStrategy {
+        componentSelection {
+            all {
+                if (isNonStable(it.candidate.version) && !isNonStable(it.currentVersion)) {
+                    reject('Release candidate')
+                }
+            }
+        }
+    }
+}
+
+

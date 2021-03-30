@@ -1,0 +1,33 @@
+import io.davidosemwota.template.buildsource.BuildPlugins
+import io.davidosemwota.template.buildsource.Libs
+
+apply plugin: BuildPlugins.spotless
+
+spotless {
+
+    kotlin {
+        target '**/*.kt'
+        targetExclude("$buildDir/**/*.kt")
+        targetExclude('bin/**/*.kt')
+
+        ktlint(Libs.Versions.ktlint)
+        licenseHeaderFile rootProject.file('.spotless/copyright.kt')
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
+
+    format 'misc', {
+        target '**/*.gradle', '**/*.md', '**/.gitignore'
+        indentWithSpaces()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+
+    format 'xml', {
+        target '**/*.xml'
+        indentWithSpaces()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+}

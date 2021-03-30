@@ -1,0 +1,20 @@
+import io.davidosemwota.template.buildsource.BuildPlugins
+import io.davidosemwota.template.buildsource.Libs
+
+apply plugin: BuildPlugins.detekt
+
+detekt {
+    toolVersion = Libs.Detekt.version
+    input = files("$projectDir")
+    config = files("$project.projectDir/default-detekt-config.yml")
+    reports {
+        xml {
+            enabled = true
+            destination = file("$project.projectDir/detekt-report.xml")
+        }
+        html {
+            enabled = true
+            destination = file("$project.projectDir/detekt-report.html")
+        }
+    }
+}
