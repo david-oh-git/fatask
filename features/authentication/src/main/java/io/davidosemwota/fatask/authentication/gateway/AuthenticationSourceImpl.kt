@@ -1,3 +1,8 @@
+/*
+ *
+ * Developed by David Osemwota(david-oh-git) (c) 2021
+ *
+ */
 package io.davidosemwota.fatask.authentication.gateway
 
 import com.google.firebase.auth.AuthResult
@@ -21,14 +26,14 @@ internal class AuthenticationSourceImpl(
 
     override suspend fun signIn(idToken: String): Result<Boolean> {
         return firebaseAuth
-            .signInWithCredential(GoogleAuthProvider.getCredential(idToken,null))
+            .signInWithCredential(GoogleAuthProvider.getCredential(idToken, null))
             .runCatching { await() }
             .map(AuthResult::getUser)
             .fold(
                 { user ->
                     if (user != null) {
                         Result.Success(true)
-                    }else {
+                    } else {
                         Result.Error(unknownError)
                     }
                 },
@@ -39,5 +44,4 @@ internal class AuthenticationSourceImpl(
     override suspend fun logOut() = withContext(ioDispatcher) {
         firebaseAuth.signOut()
     }
-
 }

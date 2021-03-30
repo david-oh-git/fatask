@@ -1,3 +1,8 @@
+/*
+ *
+ * Developed by David Osemwota(david-oh-git) (c) 2021
+ *
+ */
 package io.davidosemwota.fatask.authentication.gateway
 
 import io.davidosemwota.fatask.authentication.data.Result
