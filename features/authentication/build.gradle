@@ -49,6 +49,7 @@ dependencies {
     // Coroutines
     implementation Libs.Coroutines.core
     implementation Libs.Coroutines.android
+    implementation Libs.Coroutines.playServices
     implementation Libs.AndroidX.coreKtx
     // Navigation
     implementation Libs.AndroidX.Navigation.fragment
