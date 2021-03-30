@@ -1,4 +1,4 @@
-package io.davidosemwota.template.buildsource.utils
+package io.davidosemwota.fatask.buildsource.utils
 
 import java.util.Locale
 

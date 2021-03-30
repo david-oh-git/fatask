@@ -1,5 +1,5 @@
-import io.davidosemwota.template.buildsource.BuildTasksGroups
-import io.davidosemwota.template.buildsource.Libs
+import io.davidosemwota.fatask.buildsource.BuildTasksGroups
+import io.davidosemwota.fatask.buildsource.Libs
 
 repositories {
     jcenter()

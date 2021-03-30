@@ -1,5 +1,5 @@
-import io.davidosemwota.template.buildsource.BuildPlugins
-import io.davidosemwota.template.buildsource.Libs
+import io.davidosemwota.fatask.buildsource.BuildPlugins
+import io.davidosemwota.fatask.buildsource.Libs
 
 apply plugin: BuildPlugins.detekt
 

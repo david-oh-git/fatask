@@ -1,5 +1,5 @@
 @file:Suppress("SpellCheckingInspection")
-package io.davidosemwota.template.buildsource
+package io.davidosemwota.fatask.buildsource
 
 object Libs {
 
@@ -7,7 +7,7 @@ object Libs {
         const val ktlint = "0.40.0"
     }
 
-    const val androidGradlePlugin = "com.android.tools.build:gradle:4.1.2"
+    const val androidGradlePlugin = "com.android.tools.build:gradle:4.1.3"
     const val jdkDesugar = "com.android.tools:desugar_jdk_libs:1.0.9"
     const val benManesUpdatePlugin = "com.github.ben-manes:gradle-versions-plugin:0.36.0"
     const val spotlessPlugin = "com.diffplug.spotless:spotless-plugin-gradle:5.11.0"
@@ -21,7 +21,7 @@ object Libs {
     }
 
     object Kotlin {
-        const val version = "1.4.31"
+        const val version = "1.4.32"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         const val allOpen = "org.jetbrains.kotlin:kotlin-allopen:$version"

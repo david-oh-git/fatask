@@ -3,7 +3,7 @@
  * Developed by David Osemwota(david-oh-git) (c) 2021
  *
  */
-package io.davidosemwota.template
+package io.davidosemwota.fatask
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
