@@ -12,13 +12,17 @@ object Libs {
     const val benManesUpdatePlugin = "com.github.ben-manes:gradle-versions-plugin:0.36.0"
     const val spotlessPlugin = "com.diffplug.spotless:spotless-plugin-gradle:5.11.0"
     const val ktlint = "com.pinterest:ktlint:${Versions.ktlint}"
+    const val googleServicesPlugin = "com.google.gms:google-services:4.3.5"
 
+    const val timber = "com.jakewharton.timber:timber:4.7.1"
+    const val playServicesAuth = "com.google.android.gms:play-services-auth:19.0.0"
     const val material = "com.google.android.material:material:1.3.0"
 
     object Detekt {
         const val version = "1.0.0-RC16"
         const val detekt = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$version"
     }
+
 
     object Kotlin {
         const val version = "1.4.32"
@@ -46,12 +50,23 @@ object Libs {
         const val junit = "junit:junit:$version"
     }
 
+    object Firebase {
+        const val bom = "com.google.firebase:firebase-bom:26.8.0"
+        const val auth  = "com.google.firebase:firebase-auth-ktx"
+    }
+
     object AndroidX {
         const val appcompat = "androidx.appcompat:appcompat:1.2.0"
         const val palette = "androidx.palette:palette:1.0.0"
 
         const val coreKtx = "androidx.core:core-ktx:1.3.2"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
+
+        object Fragment {
+            private const val version = "1.3.2"
+            const val frament = "androidx.fragment:fragment-ktx:$version"
+            const val testing = "androidx.fragment:fragment-testing:$version"
+        }
 
         object Navigation {
             private const val version = "2.3.4"
@@ -62,10 +77,12 @@ object Libs {
         }
 
         object Lifecycle {
-            private const val version = "2.3.0"
-            const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02"
+            private const val version = "2.3.1"
             const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
             const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
+            const val compiler = "androidx.lifecycle:lifecycle-compiler:$version"
+            const val extentions = "androidx.lifecycle:lifecycle-extentions:$version"
+            const val lifecycle = "androidx.lifecycle:lifecycle-common-java8:$version"
         }
 
         object Test {

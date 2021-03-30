@@ -12,11 +12,15 @@
 
         <fragment
             android:id="@+id/authenticationFragment"
-            android:name="io.davidosemwota.fatask.authentication.AuthenticationFragment"
+            android:name="io.davidosemwota.fatask.authentication.ui.AuthenticationFragment"
             android:label="AuthenticationFragment"
             tools:layout="@layout/fragment_authentication"
             />
 
     </navigation>
+
+    <action
+        android:id="@+id/navigateToAuthenticationGraph"
+        app:destination="@id/authentication_graph" />
 
 </navigation>
