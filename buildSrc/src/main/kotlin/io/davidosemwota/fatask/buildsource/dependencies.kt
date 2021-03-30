@@ -53,6 +53,14 @@ object Libs {
         const val coreKtx = "androidx.core:core-ktx:1.3.2"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
 
+        object Navigation {
+            private const val version = "2.3.4"
+            const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
+            const val ui = "androidx.navigation:navigation-ui-ktx:$version"
+            const val dynamicFeature = "androidx.navigation:navigation-dynamic-features-fragment:$version"
+            const val testing = "androidx.navigation:navigation-testing:$version"
+        }
+
         object Lifecycle {
             private const val version = "2.3.0"
             const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02"
