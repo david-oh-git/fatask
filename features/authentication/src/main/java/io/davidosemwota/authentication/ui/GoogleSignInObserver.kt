@@ -3,7 +3,7 @@
  * Developed by David Osemwota(david-oh-git) (c) 2021
  *
  */
-package io.davidosemwota.fatask.authentication.ui
+package io.davidosemwota.authentication.ui
 
 import android.app.Activity
 import android.content.Context
@@ -20,7 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import io.davidosemwota.fatask.authentication.R
+import io.davidosemwota.authentication.R
 import timber.log.Timber
 
 class GoogleSignInObserver(

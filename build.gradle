@@ -5,6 +5,7 @@ apply plugin: BuildPlugins.benManes
 apply from: "$rootProject.projectDir/gradle/git-hooks.gradle"
 
 buildscript {
+
     repositories {
         google()
         jcenter()

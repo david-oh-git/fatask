@@ -65,7 +65,7 @@ object Libs {
 
         object Fragment {
             private const val version = "1.3.2"
-            const val frament = "androidx.fragment:fragment-ktx:$version"
+            const val fragment = "androidx.fragment:fragment-ktx:$version"
             const val testing = "androidx.fragment:fragment-testing:$version"
         }
 

@@ -3,12 +3,12 @@
  * Developed by David Osemwota(david-oh-git) (c) 2021
  *
  */
-package io.davidosemwota.fatask.authentication.gateway
+package io.davidosemwota.authentication.gateway
 
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import io.davidosemwota.fatask.authentication.data.Result
+import io.davidosemwota.authentication.data.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await

@@ -1,4 +1,8 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="authorization_sign_in_with_google_unknown_error">Sign in failed due to unknown error</string>
+    <string name="error_no_network">Error! check network connection</string>
+    <string name="authorization_sign_in_with_google">Sign in with Google</string>
+    <string name="authorization_successful_sign_in">You are signed in !</string>
 </resources>

@@ -12,7 +12,7 @@
 
         <fragment
             android:id="@+id/authenticationFragment"
-            android:name="io.davidosemwota.fatask.authentication.ui.AuthenticationFragment"
+            android:name="io.davidosemwota.authentication.ui.AuthenticationFragment"
             android:label="AuthenticationFragment"
             tools:layout="@layout/fragment_authentication"
             />

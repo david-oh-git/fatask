@@ -3,7 +3,7 @@
  * Developed by David Osemwota(david-oh-git) (c) 2021
  *
  */
-package io.davidosemwota.fatask.authentication.data
+package io.davidosemwota.authentication.data
 
 sealed class Result<out R> {
 
@@ -16,4 +16,6 @@ sealed class Result<out R> {
             is Error -> "Error[exception=$throwable]"
         }
     }
+
+    fun isSuccess(): Boolean = this is Success
 }

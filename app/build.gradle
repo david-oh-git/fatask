@@ -80,9 +80,9 @@ dependencies {
     implementation Libs.Coroutines.core
     implementation Libs.Coroutines.android
     // Navigation
-    implementation Libs.AndroidX.Navigation.fragment
-    implementation Libs.AndroidX.Navigation.ui
-    implementation Libs.AndroidX.Navigation.dynamicFeature
+    api Libs.AndroidX.Navigation.fragment
+    api Libs.AndroidX.Navigation.ui
+    api Libs.AndroidX.Navigation.dynamicFeature
     // Firebase import BoM
     implementation platform(Libs.Firebase.bom)
     implementation Libs.playServicesAuth
