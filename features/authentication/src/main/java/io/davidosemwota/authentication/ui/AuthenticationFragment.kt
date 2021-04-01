@@ -64,7 +64,7 @@ class AuthenticationFragment : Fragment() {
     }
 
     private fun handleSignInState(signInState: SignInState) {
-        return when (signInState) {
+        when (signInState) {
             is SignInState.Success -> {
                 sendSnack(
                     binding.container,
@@ -72,7 +72,7 @@ class AuthenticationFragment : Fragment() {
                 )
 //                navigation.navigateToAuthorizedGraph(requireParentFragment().findNavController())
             }
-            SignInState.Error -> {
+            is SignInState.Error -> {
                 binding.progressBar.makeGone()
                 binding.signInWithGoogleButton.isEnabled = true
                 sendSnack(
@@ -80,7 +80,7 @@ class AuthenticationFragment : Fragment() {
                     getString(R.string.authorization_sign_in_with_google_unknown_error)
                 )
             }
-            SignInState.Progress -> {
+            is SignInState.Progress -> {
                 binding.progressBar.makeVisible()
                 binding.signInWithGoogleButton.isEnabled = false
             }

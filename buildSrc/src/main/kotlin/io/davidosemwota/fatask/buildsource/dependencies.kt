@@ -17,6 +17,8 @@ object Libs {
     const val timber = "com.jakewharton.timber:timber:4.7.1"
     const val playServicesAuth = "com.google.android.gms:play-services-auth:19.0.0"
     const val material = "com.google.android.material:material:1.3.0"
+    const val paystack = "co.paystack.android:paystack:3.1.2"
+    const val flutterwave = "com.github.flutterwave.rave-android:rave_android:2.1.26"
 
     object Detekt {
         const val version = "1.0.0-RC16"
@@ -57,10 +59,12 @@ object Libs {
     }
 
     object AndroidX {
+        const val activityKtx = "androidx.activity:activity-ktx:1.2.0-alpha04"
         const val appcompat = "androidx.appcompat:appcompat:1.2.0"
         const val palette = "androidx.palette:palette:1.0.0"
 
         const val coreKtx = "androidx.core:core-ktx:1.3.2"
+
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
 
         object Fragment {
@@ -75,6 +79,7 @@ object Libs {
             const val ui = "androidx.navigation:navigation-ui-ktx:$version"
             const val dynamicFeature = "androidx.navigation:navigation-dynamic-features-fragment:$version"
             const val testing = "androidx.navigation:navigation-testing:$version"
+            const val safeArgsplugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
         }
 
         object Lifecycle {
@@ -84,6 +89,7 @@ object Libs {
             const val compiler = "androidx.lifecycle:lifecycle-compiler:$version"
             const val extentions = "androidx.lifecycle:lifecycle-extentions:$version"
             const val lifecycle = "androidx.lifecycle:lifecycle-common-java8:$version"
+            const val liveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
         }
 
         object Test {

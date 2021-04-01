@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
+import io.davidosemwota.fatask.buildsource.BuildModules
 import io.davidosemwota.fatask.buildsource.Libs
 
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'com.google.gms.google-services'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -62,20 +63,22 @@ android {
     buildFeatures {
         viewBinding true
     }
-    dynamicFeatures = [':features:authentication']
 
 }
 
 dependencies {
-
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     // Timber
-    api Libs.timber
-
+    implementation Libs.timber
     implementation Libs.Kotlin.stdlib
+    implementation project(BuildModules.authentication)
+
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.appcompat
+    implementation Libs.AndroidX.Fragment.fragment
     implementation Libs.material
     implementation Libs.AndroidX.constraintLayout
+    implementation Libs.AndroidX.Lifecycle.liveDataKtx
     // Coroutines
     implementation Libs.Coroutines.core
     implementation Libs.Coroutines.android
@@ -86,6 +89,9 @@ dependencies {
     // Firebase import BoM
     implementation platform(Libs.Firebase.bom)
     implementation Libs.playServicesAuth
+    //Paystack
+    implementation Libs.paystack
+//    implementation Libs.flutterwave
 
     testImplementation Libs.JUnit.junit
     androidTestImplementation Libs.AndroidX.Test.Ext.junit

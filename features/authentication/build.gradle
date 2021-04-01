@@ -1,16 +1,22 @@
+
+
 import io.davidosemwota.fatask.buildsource.BuildAndroidConfig
 import io.davidosemwota.fatask.buildsource.Libs
 
-apply plugin: 'com.android.dynamic-feature'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
+//apply plugin: 'com.android.dynamic-feature'
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+}
 
 android {
     compileSdkVersion BuildAndroidConfig.compiledSdkVersion
     buildToolsVersion BuildAndroidConfig.buildToolsVersion
 
     defaultConfig {
-        applicationId "io.davidosemwota.fatask.authentication"
         minSdkVersion BuildAndroidConfig.minSdkVersion
         targetSdkVersion BuildAndroidConfig.targetSdkVersion
         versionCode BuildAndroidConfig.versionCode
@@ -41,7 +47,6 @@ android {
 }
 
 dependencies {
-    implementation project(":app")
     implementation project(":core:utility")
 
     implementation Libs.Kotlin.stdlib
@@ -58,7 +63,10 @@ dependencies {
     implementation Libs.AndroidX.Navigation.ui
     implementation Libs.AndroidX.Navigation.dynamicFeature
     // Firebase Auth
+    implementation platform(Libs.Firebase.bom)
     implementation Libs.Firebase.auth
     implementation Libs.playServicesAuth
     implementation Libs.AndroidX.constraintLayout
+    //Timber
+    implementation Libs.timber
 }

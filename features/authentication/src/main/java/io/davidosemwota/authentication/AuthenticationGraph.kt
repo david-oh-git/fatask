@@ -16,7 +16,7 @@ object AuthenticationGraph {
     val signInUseCase: SignInUseCase
         get() = SignInUseCase(provideAuthenticationSource())
 
-    private fun provideAuthenticationSource(): AuthenticationSource {
+    fun provideAuthenticationSource(): AuthenticationSource {
         return AuthenticationSourceImpl(
             FirebaseAuth.getInstance(),
             Dispatchers.IO

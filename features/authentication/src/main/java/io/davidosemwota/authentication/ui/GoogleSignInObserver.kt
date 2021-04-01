@@ -38,12 +38,12 @@ class GoogleSignInObserver(
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(context.getString(R.string.default_web_client_id))
                 .requestEmail()
-                .requestProfile()
                 .build()
             return GoogleSignIn.getClient(activity, gso).signInIntent
         }
 
         override fun parseResult(resultCode: Int, intent: Intent?): Task<GoogleSignInAccount> {
+            Timber.d("Result code is $resultCode")
             return GoogleSignIn.getSignedInAccountFromIntent(intent)
         }
     }
@@ -69,6 +69,7 @@ class GoogleSignInObserver(
         if (exception != null) {
             val apiException = exception as ApiException
             Timber.d("An error occurred when signing in: ${apiException.message}")
+            Timber.d("Error ${apiException.printStackTrace()}")
             onError(apiException)
             return
         }
