@@ -9,6 +9,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import io.davidosemwota.fatask.ui.launcher.LauncherFragmentDirections.Companion.navigateFromLauncherToAuthenticatedGraph
+import io.davidosemwota.fatask.ui.launcher.LauncherFragmentDirections.Companion.navigateFromLauncherToNotAuthenticatedGraph as navigateFromLauncherToNotAuthenticatedGraph
 
 class LauncherFragment : Fragment() {
 
@@ -19,7 +21,11 @@ class LauncherFragment : Fragment() {
         viewModel.isUserAuthenticated.observe(
             this,
             { isUserAuthenticated ->
-                val action = LauncherFragmentDirections.navigateFromLauncherToNotAuthenticatedGraph()
+                val action = if (isUserAuthenticated) {
+                    navigateFromLauncherToAuthenticatedGraph()
+                } else {
+                    navigateFromLauncherToNotAuthenticatedGraph()
+                }
 
                 findNavController().navigate(action)
             }

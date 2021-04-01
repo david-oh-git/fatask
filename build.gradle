@@ -6,6 +6,10 @@ apply plugin: BuildPlugins.benManes
 apply from: "$rootProject.projectDir/gradle/git-hooks.gradle"
 
 buildscript {
+
+    ext {
+        kotlin_version = '1.4.32'
+    }
     repositories {
         google()
         jcenter()
@@ -22,6 +26,7 @@ buildscript {
         classpath Libs.Detekt.detekt
         classpath Libs.googleServicesPlugin
         classpath Libs.AndroidX.Navigation.safeArgsplugin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 

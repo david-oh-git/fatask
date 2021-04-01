@@ -21,6 +21,21 @@
 
     </navigation>
 
+    <navigation
+        android:id="@+id/authenticatedGraph"
+        android:label="Fatask"
+        app:startDestination="@id/authenticationFragment"
+        >
+
+        <fragment
+            android:id="@+id/authenticationFragment"
+            android:name="io.davidosemwota.payment.ui.PaymentFragment"
+            android:label="PaymentFragment"
+            tools:layout="@layout/fragment_payment"
+            />
+
+    </navigation>
+
     <fragment
         android:id="@+id/launcherFragment"
         android:name="io.davidosemwota.fatask.ui.launcher.LauncherFragment"
@@ -32,10 +47,22 @@
             app:popUpTo="@id/launcherFragment"
             app:popUpToInclusive="true" />
 
+        <action
+            android:id="@+id/navigateFromLauncherToAuthenticatedGraph"
+            app:destination="@id/authenticatedGraph"
+            app:popUpTo="@id/launcherFragment"
+            app:popUpToInclusive="true" />
+
     </fragment>
 
     <action
         android:id="@+id/navigateToNotAuthenticationGraph"
+        app:popUpTo="@id/authenticatedGraph"
         app:destination="@id/notAuthenticatedGraph" />
+
+    <action
+        android:id="@+id/navigateToAuthenticationGraph"
+        app:popUpTo="@id/launcherFragment"
+        app:destination="@id/authenticatedGraph" />
 
 </navigation>

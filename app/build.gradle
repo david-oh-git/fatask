@@ -72,6 +72,7 @@ dependencies {
     implementation Libs.timber
     implementation Libs.Kotlin.stdlib
     implementation project(BuildModules.authentication)
+    implementation project(BuildModules.payment)
 
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.appcompat
