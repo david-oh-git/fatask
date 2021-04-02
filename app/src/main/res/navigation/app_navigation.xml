@@ -14,10 +14,17 @@
 
         <fragment
             android:id="@+id/authenticationFragment"
-            android:name="io.davidosemwota.authentication.ui.AuthenticationFragment"
+            android:name="io.osemwota.authentication.ui.AuthenticationFragment"
             android:label="AuthenticationFragment"
             tools:layout="@layout/fragment_authentication"
-            />
+            >
+            <action
+                android:id="@+id/goToAuthenticated"
+                app:destination="@id/authenticatedGraph"
+                app:popUpTo="@id/launcherFragment"
+                app:popUpToInclusive="true" />
+
+        </fragment>
 
     </navigation>
 
@@ -29,14 +36,14 @@
 
         <fragment
             android:id="@+id/homeFragment"
-            android:name="io.davidosemwota.payment.ui.home.HomeFragment"
+            android:name="io.osemwota.payment.ui.home.HomeFragment"
             android:label="HomeFragment"
             tools:layout="@layout/fragment_home"
             />
 
         <fragment
             android:id="@+id/paymentFragment"
-            android:name="io.davidosemwota.payment.ui.PaymentFragment"
+            android:name="io.osemwota.payment.ui.PaymentFragment"
             android:label="PaymentFragment"
             tools:layout="@layout/fragment_payment"
             />
@@ -45,7 +52,7 @@
 
     <fragment
         android:id="@+id/launcherFragment"
-        android:name="io.davidosemwota.fatask.ui.launcher.LauncherFragment"
+        android:name="io.osemwota.fatask.ui.launcher.LauncherFragment"
         android:label="LauncherFragment">
 
         <action

@@ -1,6 +1,6 @@
 
-import io.davidosemwota.fatask.buildsource.Libs
-import io.davidosemwota.fatask.buildsource.BuildModules
+import io.osemwota.fatask.buildsource.Libs
+import io.osemwota.fatask.buildsource.BuildModules
 
 plugins {
     id 'com.android.library'

@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import io.davidosemwota.fatask.buildsource.BuildModules
-import io.davidosemwota.fatask.buildsource.Libs
+import io.osemwota.fatask.buildsource.BuildModules
+import io.osemwota.fatask.buildsource.Libs
 
 plugins {
     id 'com.android.application'
@@ -29,7 +29,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId  "io.davidosemwota.fatask"
+        applicationId  "io.osemwota.fatask"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode  1
@@ -84,9 +84,8 @@ dependencies {
     implementation Libs.Coroutines.core
     implementation Libs.Coroutines.android
     // Navigation
-    api Libs.AndroidX.Navigation.fragment
-    api Libs.AndroidX.Navigation.ui
-    api Libs.AndroidX.Navigation.dynamicFeature
+    implementation Libs.AndroidX.Navigation.fragment
+    implementation Libs.AndroidX.Navigation.ui
     // Firebase import BoM
     implementation platform(Libs.Firebase.bom)
     implementation Libs.playServicesAuth

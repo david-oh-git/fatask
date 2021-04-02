@@ -1,5 +1,5 @@
-import io.davidosemwota.fatask.buildsource.utils.SystemOSUtilsKt
-import io.davidosemwota.fatask.buildsource.BuildTaskGroups
+import io.osemwota.fatask.buildsource.utils.SystemOSUtilsKt
+import io.osemwota.fatask.buildsource.BuildTaskGroups
 
 // Task to copy files from git-hooks to .get/hooks/
 task copyGitHooks(type: Copy) {
@@ -10,7 +10,7 @@ task copyGitHooks(type: Copy) {
         rename '(.*).sh', '$1'
     }
     into "${rootDir}/.git/hooks"
-//    onlyIf { isLinuxOrMacOs() }
+    onlyIf { SystemOSUtilsKt.isLinuxOrMacOs() }
 }
 
 task installGitHooks(type: Exec) {
@@ -19,7 +19,7 @@ task installGitHooks(type: Exec) {
     workingDir rootDir
     commandLine 'chmod'
     args '-R', '+x', '.git/hooks/'
-    onlyIf { io.davidosemwota.fatask.buildsource.utils.SystemOSUtilsKt.isLinuxOrMacOs() }
+//    onlyIf { SystemOSUtilsKt.isLinuxOrMacOs() }
     dependsOn copyGitHooks
     doLast {
         logger.info('Git hook installed successfully.')
