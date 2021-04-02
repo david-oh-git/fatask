@@ -1,5 +1,6 @@
 
 import io.davidosemwota.fatask.buildsource.Libs
+import io.davidosemwota.fatask.buildsource.BuildModules
 
 plugins {
     id 'com.android.library'
@@ -40,10 +41,16 @@ android {
 }
 
 dependencies {
+    implementation project(BuildModules.coreUtility)
+
     implementation Libs.Kotlin.stdlib
     implementation Libs.AndroidX.Lifecycle.lifecycle
     implementation Libs.AndroidX.appcompat
     implementation Libs.AndroidX.Fragment.fragment
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation Libs.AndroidX.constraintLayout
+    implementation Libs.material
+    //Paystack
+    implementation Libs.paystack
+    //Timber
+    implementation Libs.timber
 }

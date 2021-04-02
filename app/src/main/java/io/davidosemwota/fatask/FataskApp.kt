@@ -6,6 +6,7 @@
 package io.davidosemwota.fatask
 
 import android.app.Application
+import io.davidosemwota.payment.PaymentGraph
 import timber.log.Timber
 
 class FataskApp : Application() {
@@ -13,6 +14,7 @@ class FataskApp : Application() {
     override fun onCreate() {
         super.onCreate()
         initTimber()
+        PaymentGraph.initialisePaystackSdk(applicationContext)
     }
 
     private fun initTimber() {

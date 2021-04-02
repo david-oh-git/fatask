@@ -2,6 +2,7 @@
 
 import io.davidosemwota.fatask.buildsource.BuildAndroidConfig
 import io.davidosemwota.fatask.buildsource.Libs
+import io.davidosemwota.fatask.buildsource.BuildModules
 
 //apply plugin: 'com.android.dynamic-feature'
 
@@ -47,7 +48,7 @@ android {
 }
 
 dependencies {
-    implementation project(":core:utility")
+    implementation project(BuildModules.coreUtility)
 
     implementation Libs.Kotlin.stdlib
     implementation Libs.AndroidX.Lifecycle.lifecycle

@@ -1,4 +1,9 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="get_amount_hint">Enter amount in dollars</string>
+    <string name="card_number_hint">Card Number</string>
+    <string name="cvv_hint">CVV</string>
+    <string name="card_pin_hint">Card PIN</string>
+    <string name="fake_card_pin">1111</string>
+    <string name="charge_btn">Charge</string>
+    <string name="test_email">customer@testemail.com</string>
 </resources>

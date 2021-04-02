@@ -24,6 +24,10 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="co.paystack.android.PublicKey"
+            android:value="pk_test_6dfc3cc7d17759a57060b8ad4099fc99451f26e1"/>
+
     </application>
 
 </manifest>

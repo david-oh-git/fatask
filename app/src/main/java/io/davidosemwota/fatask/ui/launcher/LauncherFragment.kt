@@ -21,7 +21,7 @@ class LauncherFragment : Fragment() {
         viewModel.isUserAuthenticated.observe(
             this,
             { isUserAuthenticated ->
-                val action = if (isUserAuthenticated) {
+                val action = if (true) {
                     navigateFromLauncherToAuthenticatedGraph()
                 } else {
                     navigateFromLauncherToNotAuthenticatedGraph()

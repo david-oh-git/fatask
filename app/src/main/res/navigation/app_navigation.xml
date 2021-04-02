@@ -24,11 +24,18 @@
     <navigation
         android:id="@+id/authenticatedGraph"
         android:label="Fatask"
-        app:startDestination="@id/authenticationFragment"
+        app:startDestination="@id/homeFragment"
         >
 
         <fragment
-            android:id="@+id/authenticationFragment"
+            android:id="@+id/homeFragment"
+            android:name="io.davidosemwota.payment.ui.home.HomeFragment"
+            android:label="HomeFragment"
+            tools:layout="@layout/fragment_home"
+            />
+
+        <fragment
+            android:id="@+id/paymentFragment"
             android:name="io.davidosemwota.payment.ui.PaymentFragment"
             android:label="PaymentFragment"
             tools:layout="@layout/fragment_payment"

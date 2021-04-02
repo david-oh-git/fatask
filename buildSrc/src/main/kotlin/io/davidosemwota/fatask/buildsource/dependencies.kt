@@ -18,7 +18,7 @@ object Libs {
     const val playServicesAuth = "com.google.android.gms:play-services-auth:19.0.0"
     const val material = "com.google.android.material:material:1.3.0"
     const val paystack = "co.paystack.android:paystack:3.1.2"
-    const val flutterwave = "com.github.flutterwave.rave-android:rave_android:2.1.26"
+    const val flutterwave = "com.github.flutterwave.rave-android:rave_android:2.1.28'"
 
     object Detekt {
         const val version = "1.0.0-RC16"

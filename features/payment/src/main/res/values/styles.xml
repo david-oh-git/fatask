@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomDialogStyle" parent="MaterialAlertDialog.MaterialComponents" >
+        <item name="shapeAppearance">@style/ShapeAppearance.RouncCorner</item>
+    </style>
+
+    <style name="ShapeAppearance.RouncCorner" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">32dp</item>
+    </style>
+
+
+</resources>

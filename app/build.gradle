@@ -90,9 +90,6 @@ dependencies {
     // Firebase import BoM
     implementation platform(Libs.Firebase.bom)
     implementation Libs.playServicesAuth
-    //Paystack
-    implementation Libs.paystack
-//    implementation Libs.flutterwave
 
     testImplementation Libs.JUnit.junit
     androidTestImplementation Libs.AndroidX.Test.Ext.junit
