@@ -49,6 +49,7 @@ dependencies {
     implementation Libs.AndroidX.Fragment.fragment
     implementation Libs.AndroidX.constraintLayout
     implementation Libs.material
+    implementation Libs.AndroidX.Lifecycle.liveDataKtx
     //Paystack
     implementation Libs.paystack
     //Timber

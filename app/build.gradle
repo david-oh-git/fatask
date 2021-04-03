@@ -38,7 +38,20 @@ android {
         testInstrumentationRunner  "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        debug {
+            storeFile rootProject.file('fatask.jks')
+            storePassword 'android'
+            keyAlias 'android'
+            keyPassword 'android'
+        }
+    }
+
     buildTypes {
+
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -68,12 +81,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    // Timber
-    implementation Libs.timber
+
     implementation Libs.Kotlin.stdlib
     implementation project(BuildModules.authentication)
     implementation project(BuildModules.payment)
-
+    // Timber
+    implementation Libs.timber
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.appcompat
     implementation Libs.AndroidX.Fragment.fragment
