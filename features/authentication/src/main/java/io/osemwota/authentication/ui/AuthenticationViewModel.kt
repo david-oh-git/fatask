@@ -5,11 +5,19 @@
  */
 package io.osemwota.authentication.ui
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import io.osemwota.utility.DataStoreSource
+import io.osemwota.utility.UtilityGraph
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class AuthenticationViewModel() : ViewModel() {
+class AuthenticationViewModel(
+    private val dataStoreSource: DataStoreSource = UtilityGraph
+) : ViewModel() {
 
     private val _signInState = MutableLiveData<SignInState>()
     val signInState: LiveData<SignInState>
@@ -17,5 +25,11 @@ class AuthenticationViewModel() : ViewModel() {
 
     fun setSigninState(state: SignInState) {
         _signInState.postValue(state)
+    }
+
+    fun saveName(context: Context, key: String, value: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dataStoreSource.save(context, key, value)
+        }
     }
 }

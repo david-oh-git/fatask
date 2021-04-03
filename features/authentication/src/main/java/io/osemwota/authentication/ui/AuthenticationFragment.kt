@@ -20,6 +20,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import io.osemwota.authentication.R
 import io.osemwota.authentication.databinding.FragmentAuthenticationBinding
+import io.osemwota.utility.SAVE_NAME_KEY
 import io.osemwota.utility.extentions.makeGone
 import io.osemwota.utility.extentions.makeVisible
 import io.osemwota.utility.extentions.observe
@@ -33,6 +34,7 @@ class AuthenticationFragment : Fragment() {
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK && result.data != null) {
+            saveAccountDetails()
             viewModel.setSigninState(SignInState.Success)
         } else {
             viewModel.setSigninState(SignInState.Error)
@@ -89,6 +91,14 @@ class AuthenticationFragment : Fragment() {
         }
     }
 
+    private fun saveAccountDetails() {
+        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
+        if (account != null) {
+            account.displayName?.let {
+                viewModel.saveName(requireContext(), SAVE_NAME_KEY, "Hello $it")
+            }
+        }
+    }
     private fun signIn() {
         viewModel.setSigninState(SignInState.Progress)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

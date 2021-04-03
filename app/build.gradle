@@ -68,12 +68,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    // Timber
-    implementation Libs.timber
+
     implementation Libs.Kotlin.stdlib
     implementation project(BuildModules.authentication)
     implementation project(BuildModules.payment)
-
+    // Timber
+    implementation Libs.timber
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.appcompat
     implementation Libs.AndroidX.Fragment.fragment

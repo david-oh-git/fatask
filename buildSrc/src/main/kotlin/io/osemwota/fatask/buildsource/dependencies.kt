@@ -7,6 +7,7 @@ object Libs {
         const val ktlint = "0.40.0"
     }
 
+    const val dataStore = "androidx.datastore:datastore-preferences:1.0.0-alpha08"
     const val androidGradlePlugin = "com.android.tools.build:gradle:4.1.3"
     const val jdkDesugar = "com.android.tools:desugar_jdk_libs:1.0.9"
     const val benManesUpdatePlugin = "com.github.ben-manes:gradle-versions-plugin:0.36.0"

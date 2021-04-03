@@ -28,7 +28,9 @@ import timber.log.Timber
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels {
+        HomeViewModelFactory(requireActivity().application)
+    }
     private val card: Card = Card(
         "507850785078507812",
         4,
@@ -56,6 +58,11 @@ class HomeFragment : Fragment() {
 
         binding.charge.setOnClickListener { chargeCard() }
         observe(viewModel.accountBalance, ::setAmount)
+        observe(viewModel.name, ::setName)
+    }
+
+    private fun setName(name: String) {
+        binding.welcomeMsg.text = name
     }
 
     private fun setAmount(amount: Double) {
