@@ -38,7 +38,20 @@ android {
         testInstrumentationRunner  "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        debug {
+            storeFile rootProject.file('fatask.jks')
+            storePassword 'android'
+            keyAlias 'android'
+            keyPassword 'android'
+        }
+    }
+
     buildTypes {
+
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
