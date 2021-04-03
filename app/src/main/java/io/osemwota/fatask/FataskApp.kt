@@ -9,6 +9,9 @@ import android.app.Application
 import io.osemwota.payment.PaymentGraph
 import timber.log.Timber
 
+/**
+ * [Application] class for the app.
+ */
 class FataskApp : Application() {
 
     override fun onCreate() {
