@@ -66,7 +66,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setAmount(amount: Double) {
-        binding.balance.text = "\$${amount.currencyFormat}"
+        "\$${amount.currencyFormat}".also { binding.balance.text = it }
     }
 
     private fun chargeCard() {
