@@ -41,12 +41,6 @@
             tools:layout="@layout/fragment_home"
             />
 
-        <fragment
-            android:id="@+id/paymentFragment"
-            android:name="io.osemwota.payment.ui.PaymentFragment"
-            android:label="PaymentFragment"
-            tools:layout="@layout/fragment_payment"
-            />
 
     </navigation>
 
