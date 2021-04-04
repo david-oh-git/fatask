@@ -1,5 +1,5 @@
 <resources>
-    <string name="get_amount_hint">Enter amount in dollars</string>
+    <string name="get_amount_hint">Enter amount in naira</string>
     <string name="card_number_hint">Card Number</string>
     <string name="cvv_hint">CVV</string>
     <string name="card_pin_hint">Card PIN</string>
