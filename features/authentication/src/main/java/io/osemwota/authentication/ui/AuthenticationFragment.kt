@@ -5,22 +5,17 @@
  */
 package io.osemwota.authentication.ui
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import io.osemwota.authentication.R
 import io.osemwota.authentication.databinding.FragmentAuthenticationBinding
-import io.osemwota.utility.SAVE_NAME_KEY
 import io.osemwota.utility.extentions.makeGone
 import io.osemwota.utility.extentions.makeVisible
 import io.osemwota.utility.extentions.observe
@@ -30,20 +25,23 @@ class AuthenticationFragment : Fragment() {
 
     private val viewModel by viewModels<AuthenticationViewModel>()
     private lateinit var binding: FragmentAuthenticationBinding
-    private val resultLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == Activity.RESULT_OK && result.data != null) {
-            saveAccountDetails()
-            viewModel.setSigninState(SignInState.Success)
-        } else {
-            viewModel.setSigninState(SignInState.Error)
-        }
+    private val googleSignInObserver = GoogleSignInResultObserver(
+        fragment = this,
+        onError = ::handleGoogleSignInError,
+        onSuccess = { context, key, value -> viewModel.saveName(context, key, value) }
+    )
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        lifecycle.addObserver(googleSignInObserver)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.signInWithGoogleButton.setOnClickListener { signIn() }
+        binding.signInWithGoogleButton.setOnClickListener {
+            viewModel.setSignInState(SignInState.Progress)
+            googleSignInObserver.signIn()
+        }
         observe(viewModel.signInState, ::handleSignInState)
     }
 
@@ -64,6 +62,7 @@ class AuthenticationFragment : Fragment() {
         } else {
             getString(R.string.authorization_sign_in_with_google_unknown_error)
         }
+        viewModel.setSignInState(SignInState.Error)
         sendSnack(binding.container, message)
     }
 
@@ -89,27 +88,5 @@ class AuthenticationFragment : Fragment() {
                 binding.signInWithGoogleButton.isEnabled = false
             }
         }
-    }
-
-    private fun saveAccountDetails() {
-        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
-        if (account != null) {
-            account.displayName?.let {
-                viewModel.saveName(requireContext(), SAVE_NAME_KEY, "Hello $it")
-            }
-        }
-    }
-    private fun signIn() {
-        viewModel.setSigninState(SignInState.Progress)
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
-        val googleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
-        resultLauncher.launch(googleSignInClient.signInIntent)
-    }
-
-    fun isUserSignedIn(): Boolean {
-        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
-        return account != null
     }
 }

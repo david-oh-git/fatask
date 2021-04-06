@@ -20,6 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import io.osemwota.utility.SAVE_NAME_KEY
 import timber.log.Timber
 
 /**
@@ -28,7 +29,7 @@ import timber.log.Timber
 class GoogleSignInResultObserver(
     private val fragment: Fragment,
     private val onError: (ApiException) -> Unit,
-    private val onSuccess: (idToken: String) -> Unit
+    private val onSuccess: (context: Context, key: String, value: String) -> Unit
 ) : DefaultLifecycleObserver {
 
     private class GoogleSignInActivityResultContract(
@@ -39,7 +40,6 @@ class GoogleSignInResultObserver(
             val gso = GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
-                .requestProfile()
                 .build()
             return GoogleSignIn.getClient(activity, gso).signInIntent
         }
@@ -73,6 +73,6 @@ class GoogleSignInResultObserver(
             onError(apiException)
             return
         }
-        onSuccess(task.result!!.idToken!!)
+        task.result?.displayName?.let { onSuccess(activity, SAVE_NAME_KEY, it) }
     }
 }

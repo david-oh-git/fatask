@@ -23,13 +23,14 @@ class AuthenticationViewModel(
     val signInState: LiveData<SignInState>
         get() = _signInState
 
-    fun setSigninState(state: SignInState) {
+    fun setSignInState(state: SignInState) {
         _signInState.postValue(state)
     }
 
     fun saveName(context: Context, key: String, value: String) {
         viewModelScope.launch(Dispatchers.IO) {
             dataStoreSource.save(context, key, value)
+            setSignInState(SignInState.Success)
         }
     }
 }

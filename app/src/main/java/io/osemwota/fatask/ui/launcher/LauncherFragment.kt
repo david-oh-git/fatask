@@ -34,7 +34,7 @@ class LauncherFragment : Fragment() {
         )
     }
 
-    fun isUserSignedIn(): Boolean {
+    private fun isUserSignedIn(): Boolean {
         val account = GoogleSignIn.getLastSignedInAccount(requireContext())
         return account != null
     }
