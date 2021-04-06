@@ -10,10 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import io.osemwota.authentication.gateway.AuthenticationSourceImpl
 
 class LauncherFragment : Fragment() {
 
-    private val viewModel by viewModels<LauncherViewModel>()
+    private val viewModel: LauncherViewModel by viewModels {
+        LauncherViewModelFactory(
+            AuthenticationSourceImpl(requireContext())
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

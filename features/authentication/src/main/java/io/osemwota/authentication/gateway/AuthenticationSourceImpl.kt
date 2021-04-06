@@ -9,7 +9,7 @@ import android.content.Context
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
-internal class AuthenticationSourceImpl(
+class AuthenticationSourceImpl(
     private val context: Context
 ) : AuthenticationSource {
 

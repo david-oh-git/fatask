@@ -5,8 +5,8 @@
  */
 package io.osemwota.fatask.ui.launcher
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import io.osemwota.authentication.gateway.AuthenticationSource
@@ -15,7 +15,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class LauncherViewModel(
-    application: Application,
     private val authenticationSource: AuthenticationSource,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
@@ -28,4 +27,15 @@ class LauncherViewModel(
     fun signOut() = viewModelScope.launch(ioDispatcher) {
         authenticationSource.signOut()
     }
+}
+
+@Suppress("UNCHECKED_CAST")
+class LauncherViewModelFactory(
+    private val authenticationSource: AuthenticationSource
+) : ViewModelProvider.NewInstanceFactory() {
+
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+        LauncherViewModel(
+            authenticationSource
+        ) as T
 }

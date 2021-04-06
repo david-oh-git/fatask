@@ -52,7 +52,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v0.20
+          tag_name: v0.21
           asset_path: app/build/outputs/universal_apk/debug/app-debug-universal.apk
           asset_name: fatask_debug.apk
           asset_content_type: application/zip
