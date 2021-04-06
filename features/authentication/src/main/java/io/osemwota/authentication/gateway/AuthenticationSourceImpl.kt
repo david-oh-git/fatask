@@ -18,12 +18,11 @@ internal class AuthenticationSourceImpl(
         return account != null
     }
 
-    override suspend fun signOut(context: Context) {
-        val googleSignInClient = GoogleSignIn.getClient(
+    override suspend fun signOut() {
+        GoogleSignIn.getClient(
             context,
             provideGoogleSignInOptions()
-        )
-        googleSignInClient.signOut()
+        ).signOut()
     }
 
     private fun provideGoogleSignInOptions(): GoogleSignInOptions {
